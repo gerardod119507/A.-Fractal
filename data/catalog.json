@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "3.0.0",
+  "academy": {
+    "id": "academia-fractal",
+    "name": "Academia Fractal",
+    "tagline": "Comprender, conectar y resolver",
+    "logo": "assets/academia-fractal-logo.png",
+    "symbol": "assets/academia-fractal-symbol.png"
+  },
+  "palette": {
+    "navy": "#1C3D6E",
+    "turquoise": "#00A6B2",
+    "violet": "#7850A0",
+    "coral": "#E46D5A",
+    "yellow": "#F3C75B",
+    "background": "#F6F8FB"
+  },
+  "subjects": [
+    {
+      "id": "fisica",
+      "name": "Física",
+      "shortName": "Física",
+      "icon": "atom",
+      "dataUrl": "data/fisica.enc.json",
+      "theme": {
+        "primary": "#1C3D6E",
+        "accent": "#00A6B2"
+      },
+      "enabled": true
+    }
+  ]
+}
