@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1C3D6E">
+  <meta name="description" content="Academia Fractal: Mecánica de la partícula, teoría, aplicaciones y ejercicios resueltos.">
+  <title>Academia Fractal · Mecánica de la partícula</title>
+  <link rel="icon" href="assets/academia-fractal-symbol.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: { enableMenu: true }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+  <script defer src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="is-locked">
+  <section id="authGate" class="auth-gate" aria-labelledby="authTitle">
+    <div class="auth-orbit orbit-one" aria-hidden="true"></div>
+    <div class="auth-orbit orbit-two" aria-hidden="true"></div>
+    <div class="auth-card">
+      <img src="assets/academia-fractal-logo.png" alt="Academia Fractal" class="auth-logo">
+      <p class="auth-eyebrow">FÍSICA · ACCESO ESTUDIANTIL</p>
+      <h1 id="authTitle">Mecánica de la partícula</h1>
+      <p>Plataforma de estudio basada en las páginas 97–131 del visor PDF.</p>
+      <form id="authForm" class="auth-form">
+        <label for="accessPassword">Código personal</label>
+        <div class="auth-input-row">
+          <input id="accessPassword" type="password" minlength="12" autocomplete="current-password" placeholder="FRACTAL-••••-••••" required>
+          <button class="primary-button" type="submit">Ingresar</button>
+        </div>
+        <p id="authStatus" class="auth-status" role="status" aria-live="polite">Usa el código asignado por tu docente.</p>
+      </form>
+      <div class="auth-meta"><span>10 cupos individuales</span><span>Contenido cifrado</span></div>
+    </div>
+  </section>
+  <a class="skip-link" href="#mainContent">Saltar al contenido</a>
+
+  <header class="topbar">
+    <button id="menuButton" class="icon-button mobile-only" type="button" aria-label="Abrir temario" aria-controls="sidebar" aria-expanded="false">
+      <i data-lucide="menu" aria-hidden="true"></i>
+    </button>
+
+    <a class="brand" href="#" aria-label="Inicio de Academia Fractal">
+      <img src="assets/academia-fractal-symbol.png" alt="" class="brand-symbol">
+      <span class="brand-copy"><strong>Academia Fractal</strong><small>Consulta, conecta y resuelve</small></span>
+    </a>
+
+    <label class="subject-switcher">
+      <span class="sr-only">Materia actual</span>
+      <i data-lucide="library" aria-hidden="true"></i>
+      <select id="subjectSelect" aria-label="Seleccionar materia"></select>
+    </label>
+
+    <div class="smart-search" id="smartSearch">
+      <i data-lucide="search" aria-hidden="true"></i>
+      <input id="globalSearch" type="search" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-controls="searchResults" aria-expanded="false" placeholder="Busca una fórmula, concepto o ejercicio…" autocomplete="off">
+      <kbd class="search-shortcut" aria-hidden="true">Ctrl K</kbd>
+      <button id="clearSearch" class="search-clear" type="button" aria-label="Limpiar búsqueda" hidden>
+        <i data-lucide="x" aria-hidden="true"></i>
+      </button>
+      <section id="searchPanel" class="search-panel" hidden aria-label="Resultados de búsqueda">
+        <div class="search-panel-head">
+          <span id="searchStatus">Escribe para buscar en Física</span>
+          <small>↑↓ navegar · Enter abrir · Esc cerrar</small>
+        </div>
+        <div id="searchResults" role="listbox" class="search-results"></div>
+      </section>
+    </div>
+
+    <div class="topbar-actions">
+      <button id="formulaBuilderButton" class="primary-button" type="button">
+        <i data-lucide="sigma" aria-hidden="true"></i>
+        <span>Generar formulario</span>
+      </button>
+      <button id="focusModeButton" class="quiet-button" type="button" aria-pressed="false">
+        <i data-lucide="scan" aria-hidden="true"></i>
+        <span>Enfoque</span>
+      </button>
+      <button id="logoutButton" class="quiet-button" type="button" title="Cerrar sesión">
+        <i data-lucide="log-out" aria-hidden="true"></i>
+        <span>Salir</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside id="sidebar" class="sidebar" aria-label="Temario de Física">
+      <div class="sidebar-brand-card">
+        <img src="assets/academia-fractal-logo.png" alt="Academia Fractal">
+        <p>Mecánica de la partícula · p. 97–131</p>
+      </div>
+      <nav id="chapterNav" class="chapter-nav" aria-label="Capítulos"></nav>
+      <div class="sidebar-note">
+        <i data-lucide="info" aria-hidden="true"></i>
+        <p>Filtra por etapa, subtema o palabra clave. Cada ejercicio propuesto incluye resolución y validación.</p>
+      </div>
+    </aside>
+
+    <main id="mainContent" class="main-content" tabindex="-1">
+      <section class="hero" aria-labelledby="pageTitle">
+        <div class="hero-copy">
+          <p id="moduleLabel" class="eyebrow">FÍSICA</p>
+          <h1 id="pageTitle">Academia Fractal</h1>
+          <p id="pageSummary">Selecciona un capítulo para comenzar la consulta.</p>
+          <div class="hero-actions">
+            <button id="heroSearchButton" class="light-button" type="button">
+              <i data-lucide="search" aria-hidden="true"></i> Buscar dentro de Física
+            </button>
+            <button id="heroFormulaButton" class="outline-light-button" type="button">
+              <i data-lucide="sigma" aria-hidden="true"></i> Crear formulario
+            </button>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <img src="assets/academia-fractal-symbol.png" alt="">
+          <svg viewBox="0 0 420 210">
+            <path class="hero-wave" d="M8 120 C48 30,98 30,138 120 S228 210,268 120 S358 30,408 120"/>
+            <circle cx="138" cy="120" r="8" class="hero-dot cyan"></circle>
+            <circle cx="268" cy="120" r="8" class="hero-dot yellow"></circle>
+          </svg>
+        </div>
+      </section>
+
+      <section class="control-panel" aria-label="Filtros del capítulo">
+        <div class="filter-group" role="group" aria-label="Tipo de contenido">
+          <button class="filter-chip is-active" data-filter="all" type="button" aria-pressed="true">Todo</button>
+          <button class="filter-chip prior-chip" data-filter="prior" type="button" aria-pressed="false">Consolidación previa</button>
+          <button class="filter-chip theory-chip" data-filter="theory" type="button" aria-pressed="false">Parte teórica</button>
+          <button class="filter-chip concept-chip" data-filter="concept" type="button" aria-pressed="false">Consolidación teórica</button>
+          <button class="filter-chip example-chip" data-filter="example" type="button" aria-pressed="false">Aplicación</button>
+          <button class="filter-chip practice-chip" data-filter="practice" type="button" aria-pressed="false">Consolidación práctica</button>
+        </div>
+        <label class="compact-select">
+          <span>Subtema</span>
+          <select id="subtopicSelect"><option value="all">Todos los subtemas</option></select>
+        </label>
+      </section>
+
+      <section id="contentGrid" class="content-grid" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <dialog id="solverDialog" class="solver-dialog" aria-labelledby="solverTitle">
+    <div class="solver-shell">
+      <header class="solver-header">
+        <div>
+          <p class="eyebrow">PIZARRA DE RESOLUCIÓN</p>
+          <h2 id="solverTitle">Resolución paso a paso</h2>
+        </div>
+        <button id="closeSolverButton" class="icon-button" type="button" aria-label="Cerrar pizarra"><i data-lucide="x"></i></button>
+      </header>
+      <div class="solver-grid">
+        <section class="problem-panel" aria-labelledby="problemHeading">
+          <div class="panel-heading">
+            <div><span class="step-kicker">Problema</span><h3 id="problemHeading">Situación física</h3></div>
+            <button id="toggleVisualButton" class="soft-button" type="button" aria-pressed="true"><i data-lucide="image"></i> Visual</button>
+          </div>
+          <div id="problemStatement" class="problem-statement"></div>
+          <div id="simulationMount" class="simulation-mount" role="img" aria-label="Representación visual del problema"></div>
+        </section>
+        <section class="steps-panel" aria-labelledby="stepsHeading">
+          <div class="panel-heading">
+            <div><span id="stepCounter" class="step-kicker">Paso 1</span><h3 id="stepsHeading">Resolución</h3></div>
+            <label class="compact-select step-select"><span class="sr-only">Ir a un paso</span><select id="stepSelect"></select></label>
+          </div>
+          <div id="stepContent" class="step-content" aria-live="polite" aria-atomic="true"></div>
+          <div class="solver-controls">
+            <button id="previousStepButton" class="secondary-button" type="button"><i data-lucide="arrow-left"></i> Retroceder</button>
+            <button id="replayStepButton" class="soft-button" type="button"><i data-lucide="rotate-ccw"></i> Repetir</button>
+            <button id="nextStepButton" class="primary-button" type="button">Avanzar <i data-lucide="arrow-right"></i></button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="formulaDialog" class="formula-dialog" aria-labelledby="formulaDialogTitle">
+    <div class="formula-shell">
+      <header class="formula-header">
+        <div>
+          <p class="eyebrow">GENERADOR DE FORMULARIOS</p>
+          <h2 id="formulaDialogTitle">Ecuaciones y gráficos</h2>
+          <p>Selecciona únicamente los temas que deseas combinar.</p>
+        </div>
+        <button id="closeFormulaButton" class="icon-button dark" type="button" aria-label="Cerrar generador"><i data-lucide="x"></i></button>
+      </header>
+      <div class="formula-grid">
+        <aside class="formula-selection" aria-label="Selección de temas">
+          <div class="selection-toolbar">
+            <button id="selectAllTopics" class="text-button" type="button">Seleccionar todo</button>
+            <button id="clearAllTopics" class="text-button" type="button">Limpiar</button>
+          </div>
+          <div id="formulaTopicTree" class="formula-topic-tree"></div>
+          <fieldset class="formula-options">
+            <legend>Contenido del formulario</legend>
+            <label><input id="includeDiagrams" type="checkbox" checked> Gráficos esenciales</label>
+            <label><input id="includeVariables" type="checkbox" checked> Variables y unidades</label>
+            <label><input id="includeSigns" type="checkbox" checked> Convenciones de signos</label>
+            <label><input id="compactSheet" type="checkbox"> Versión compacta</label>
+          </fieldset>
+        </aside>
+        <section class="formula-preview-panel" aria-labelledby="formulaPreviewTitle">
+          <div class="preview-toolbar">
+            <div><span class="step-kicker">Vista previa</span><h3 id="formulaPreviewTitle">Formulario personalizado</h3></div>
+            <span id="formulaSelectionCount" class="selection-count">0 temas</span>
+          </div>
+          <div id="formulaPreview" class="formula-preview"></div>
+          <div class="formula-actions">
+            <button id="printFormulaButton" class="secondary-button" type="button"><i data-lucide="printer"></i> Imprimir / guardar PDF</button>
+            <button id="downloadFormulaButton" class="primary-button" type="button"><i data-lucide="file-down"></i> Generar PDF</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </dialog>
+
+  <section id="formulaPrintSurface" class="formula-print-surface" aria-hidden="true"></section>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
